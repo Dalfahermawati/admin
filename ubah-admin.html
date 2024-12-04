@@ -10,8 +10,52 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 
-<body>
-
+<body class="m-4">
+  <h1>Ubah Data</h1>
+  <form class="mb-3">
+    <div class="mb-3">
+      <label class="form-label">Nama Barang</label>
+      <input type="text" class="form-control" id="input-namaBarang">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Keluar</label>
+      <input type="text" class="form-control" id="input-keluar">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Masuk</label>
+      <input type="text" class="form-control" id="input-masuk">
+    </div>
+       <div class="mb-3">
+         <label class="form-label">Jumlah Stok</label>
+         <input type="text" class="form-control" id="input-jumlahStok">
+       </div>
+    <button type="submit" class="btn btn-primary" id="tombol-ubah">Ubah</button>
+    </form>
+    <a class="mt-1" href="form-data-stok.html">Lihat Data Stok</a>
+    <script type="module">
+      import { ambilDataStok, ubahDataStok } from './main.js';
+      let tombolUbah = document.getElementById('tombol-ubah');
+      let elemenNamaBarang = document.getElementById('input-namaBarang');
+      let elemenKeluar = document.getElementById('input-keluar');
+      let elemenMasuk = document.getElementById('input-masuk');
+      let elemenJumlahStok = document.getElementById('input-jumlahStok')
+      const queryString = window.location.search
+      const parameterURL = new URLSearchParams(queryString);
+      const docId = parameterURL.get('docId')
+      const data - stok = await ambilDataStok(docId);
+    
+      elemenNamaBarang.value = pembeli.namaBarang;
+      elemenKeluar.value = pembeli.keluar;
+      elemenMasuk.value = pembeli.masuk;
+      
+      tombolUbah.addEventListener('click', async function(el) {
+        el.preventDefault();
+      
+        await ubahDataStok(docId, elemenNamaBarang.value, elemenKeluar.value, elemenMasuk.value, elemenJumlahStok.value);
+        window.location.href = 'index.html';
+      });
+      </script>
+      
 </body>
 
 </html>
