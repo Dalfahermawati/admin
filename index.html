@@ -32,37 +32,37 @@
     import { ambilDataStok, formatAngka, hapusDataStok } from './main.js';
 
     $(document).ready(async function() {
-            let elemenData = $("#data-stok > tbody");
-            let dataStok = await ambilDataStok();
-            let nomor = 1;
-            dataStok.forEach((data) => {
-              elemenData.append(
-                '<tr>' +
-                '<th>' + nomor + '</th>' +
-                '<td>' + data.namaBarang + '</td>' +
-                '<td>' + data.keluar + '</td>' +
-                '<td>' + data.masuk + '</td>' +
-                '<td>' + data.jumlahStok + '</td>' +
-                '<td>' + '<td class="stack-up">' +
-                ' <a href="#" class="me-2 link-ubah" data="' +
-                data.id +
-                '">ubah</a> ' +
-                ' <button class="btn btn-danger tombol-hapus" data="' +
-                data.id +
-                '">Hapus</button>' + '</td>' +
-                '</tr>'
-              );
-              nomor = nomor + 1;
-            });
-        $('.tombol-hapus').click(async function() {
-      await hapusDataStok($(this).attr('data'));
-      location.reload();
+      let elemenData = $("#data-stok > tbody");
+      let dataStok = await ambilDataStok();
+      let nomor = 1;
+      dataStok.forEach((data) => {
+        elemenData.append(
+          '<tr>' +
+          '<th>' + nomor + '</th>' +
+          '<td>' + data.namaBarang + '</td>' +
+          '<td>' + data.keluar + '</td>' +
+          '<td>' + data.masuk + '</td>' +
+          '<td>' + data.jumlahStok + '</td>' +
+          '<td>' + '<td class="stack-up">' +
+          ' <a href="#" class="me-2 link-ubah" data="' +
+          data.id +
+          '">ubah</a> ' +
+          ' <button class="btn btn-danger tombol-hapus" data="' +
+          data.id +
+          '">Hapus</button>' + '</td>' +
+          '</tr>'
+        );
+        nomor = nomor + 1;
+      });
+      $('.tombol-hapus').click(async function() {
+        await hapusDataStok($(this).attr('data'));
+        location.reload();
       })
-      
+
       $('.link-ubah').click(async function() {
         window.location.replace('ubah-admin.html?docId=' + $(this).attr('data'));
       })
-     
+
     });
   </script>
 </body>

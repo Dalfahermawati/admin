@@ -54,3 +54,22 @@ export async function tambahDataStok(namaBarang, keluar, masuk, jumlahStok) {
     console.log('gagal menambah data-stok ' + e);
   }
 }
+export async function hapusDataStok(docId) {
+  await deleteDoc(doc(db, "data-stok", docId));
+}
+
+export async function ubahDataStok(docId, namaBarang, keluar, masuk, jumlahStok) {
+  await updateDoc(doc(db, "data-stok", docId), {
+    namaBarang: namaBarang,
+    keluar: keluar,
+    masuk: masuk,
+    jumlahStok: jumlahStok
+  });
+}
+
+export async function ambilStok(docId) {
+  const docRef = await doc(db, "data-stok", docId);
+  const docSnap = await getDoc(docRef);
+
+  return await docSnap.data();
+}
