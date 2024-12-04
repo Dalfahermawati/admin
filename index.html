@@ -54,3 +54,17 @@
               );
               nomor = nomor + 1;
             });
+        $('.tombol-hapus').click(async function() {
+      await hapusDataStok($(this).attr('data'));
+      location.reload();
+      })
+      
+      $('.link-ubah').click(async function() {
+        window.location.replace('ubah-admin.html?docId=' + $(this).attr('data'));
+      })
+     
+    });
+  </script>
+</body>
+
+</html>

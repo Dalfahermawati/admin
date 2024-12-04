@@ -32,6 +32,23 @@
     </div>
     <button type="submit" class="btn btn-primary" id="tombol-tambah">Simpan</button>
   </form>
+   <a href="index.html">Data Stok Barang Admin</a>
+  
+   <script type="module">
+     import { tambahDataStok } from './main.js';
+  
+     let tombolTambah = document.getElementById('tombol-tambah');
+     let elemenNamaBarang = document.getElementById('input-namaBarang');
+     let elemenKeluar = document.getElementById('input-keluar');
+     let elemenMasuk = document.getElementById('input-masuk');
+     let elemenJumlahStok = document.getElementById('input-jumlahStok')
+  
+     tombolTambah.addEventListener('click', async function(e) {
+       e.preventDefault();
+       await tambahDataStok(elemenNamaBarang.value, elemenKeluar.value, elemenMasuk.value, elemenJumlahStok.value);
+       window.location.href = 'index.html'
+     })
+   </script>
 
 </body>
 
