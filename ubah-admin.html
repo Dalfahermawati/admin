@@ -27,7 +27,7 @@
     </div>
        <div class="mb-3">
          <label class="form-label">Sisa Stok</label>
-         <input type="text" class="form-control" id="input-sisaStok">
+         <input type="text" class="form-control" id="input-jumlahStok">
        </div>
     <button type="submit" class="btn btn-primary" id="tombol-ubah">Ubah</button>
     </form>
@@ -38,7 +38,7 @@
       let elemenNamaBarang = document.getElementById('input-namaBarang');
       let elemenMasuk = document.getElementById('input-masuk');
       let elemenKeluar = document.getElementById('input-keluar');
-      let elemenSisaStok = document.getElementById('input-sisaStok')
+      let elemenJumlahStok = document.getElementById('input-jumlahStok')
       const queryString = window.location.search
       const parameterURL = new URLSearchParams(queryString);
       const docId = parameterURL.get('docId')
@@ -50,7 +50,7 @@
       
       tombolUbah.addEventListener('click', async function(el) {
         el.preventDefault();
-        await ubahDataStok(docId, elemenNamaBarang.value, elemenMasuk.value, elemenKeluar.value, elemenSisaStok.value);
+        await ubahDataStok(docId, elemenNamaBarang.value, elemenMasuk.value, elemenKeluar.value, elemenJumlahStok.value);
         window.location.href = 'index.html';
       });
       </script>

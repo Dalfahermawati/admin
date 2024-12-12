@@ -32,7 +32,7 @@ export async function ambilDataStok() {
       namaBarang: dok.data().namaBarang,
       masuk: dok.data().masuk,
       keluar: dok.data().keluar,
-      sisaStok: dok.data().sisaStok,
+      jumlahStok: dok.data().jumlahStok,
     });
   });
   return hasil;
@@ -40,13 +40,13 @@ export async function ambilDataStok() {
 export function formatAngka(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
-export async function tambahDataStok(namaBarang, masuk, keluar, sisaStok) {
+export async function tambahDataStok(namaBarang, masuk, keluar, jumlahStok) {
   try {
     const dokRef = await addDoc(collection(db, 'data-stok'), {
       namaBarang: namaBarang,
       masuk: masuk,
       keluar: keluar,
-      sisaStok: sisaStok
+      jumlahStok: jumlahStok
     });
     console.log('berhasil menambah data-stok ' + dokRef.id);
   }
@@ -58,12 +58,12 @@ export async function hapusDataStok(docId) {
   await deleteDoc(doc(db, "data-stok", docId));
 }
 
-export async function ubahDataStok(docId, namaBarang, masuk, keluar, sisaStok) {
+export async function ubahDataStok(docId, namaBarang, masuk, keluar, jumlahStok) {
   await updateDoc(doc(db, "data-stok", docId), {
     namaBarang: namaBarang,
     masuk: masuk,
     keluar: keluar,
-    sisaStok: sisaStok
+    jumlahStok: jumlahStok
   });
 }
 
