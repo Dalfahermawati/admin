@@ -19,12 +19,12 @@
       <input type="text" class="form-control" id="input-namaBarang">
     </div>
     <div class="mb-3">
-      <label class="form-label">Keluar</label>
-      <input type="text" class="form-control" id="input-keluar">
-    </div>
-    <div class="mb-3">
       <label class="form-label">Masuk</label>
       <input type="text" class="form-control" id="input-masuk">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Keluar</label>
+      <input type="text" class="form-control" id="input-keluar">
     </div>
     <div class="mb-3">
       <label class="form-label">Jumlah Stok</label>
@@ -39,13 +39,13 @@
   
      let tombolTambah = document.getElementById('tombol-tambah');
      let elemenNamaBarang = document.getElementById('input-namaBarang');
-     let elemenKeluar = document.getElementById('input-keluar');
-     let elemenMasuk = document.getElementById('input-masuk');
+     let elemenKeluar = document.getElementById('input-masuk');
+     let elemenMasuk = document.getElementById('input-keluar');
      let elemenJumlahStok = document.getElementById('input-jumlahStok')
   
      tombolTambah.addEventListener('click', async function(e) {
        e.preventDefault();
-       await tambahDataStok(elemenNamaBarang.value, elemenKeluar.value, elemenMasuk.value, elemenJumlahStok.value);
+       await tambahDataStok(elemenNamaBarang.value, elemenMasuk.value, elemenKeluar.value, elemenJumlahStok.value);
        window.location.href = 'index.html'
      })
    </script>
