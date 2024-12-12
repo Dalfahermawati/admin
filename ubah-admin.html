@@ -33,7 +33,7 @@
     </form>
     <a class="mt-1" href="form-data-stok.html">Lihat Data Stok</a>
     <script type="module">
-      import { ambilDataStok, ubahDataStok } from './main.js';
+      import { ambilStok, ubahDataStok } from './main.js';
       let tombolUbah = document.getElementById('tombol-ubah');
       let elemenNamaBarang = document.getElementById('input-namaBarang');
       let elemenKeluar = document.getElementById('input-keluar');
@@ -42,15 +42,14 @@
       const queryString = window.location.search
       const parameterURL = new URLSearchParams(queryString);
       const docId = parameterURL.get('docId')
-      const data - stok = await ambilDataStok(docId);
+      const data = await ambilStok(docId);
     
-      elemenNamaBarang.value = pembeli.namaBarang;
-      elemenKeluar.value = pembeli.keluar;
-      elemenMasuk.value = pembeli.masuk;
+      elemenNamaBarang.value = data.namaBarang;
+      elemenKeluar.value = data.keluar;
+      elemenMasuk.value = data.masuk;
       
       tombolUbah.addEventListener('click', async function(el) {
         el.preventDefault();
-      
         await ubahDataStok(docId, elemenNamaBarang.value, elemenKeluar.value, elemenMasuk.value, elemenJumlahStok.value);
         window.location.href = 'index.html';
       });
